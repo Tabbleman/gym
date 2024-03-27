@@ -1,0 +1,7 @@
+.cph/
+*.json
+*.exe
+*.out
+*.o 
+*.tmp
+*.swp
