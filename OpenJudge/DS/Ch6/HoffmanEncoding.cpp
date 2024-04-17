@@ -3,11 +3,12 @@
 */
 #include <algorithm>
 #include <iostream>
-#include <memory>
 #include <string>
 #include <vector>
+#include <memory>
 
 const int N = 110;
+
 
 typedef struct HoffmanTreeNode {
   int weight;
@@ -15,6 +16,7 @@ typedef struct HoffmanTreeNode {
   HoffmanTreePtr lChild, rChild;
 } HoffmanTreeNode;
 typedef std::shared_ptr<HoffmanTreeNode> HoffmanTreePtr;
+
 
 HoffmanTreePtr createHoffmanTree(std::vector<int> v) {
   std::vector<HoffmanTreePtr> forest(v.size());
@@ -58,6 +60,7 @@ HoffmanTreePtr createHoffmanTree(std::vector<int> v) {
   }
   return root;
 }
+
 int getWPL(HoffmanTreePtr tree, int depth) {
   if (tree == nullptr)
     return 0;
@@ -85,10 +88,24 @@ void printHuffmanTree(HoffmanTreePtr root, int depth = 0, char prefix = '-') {
   printHuffmanTree(root->rChild, depth + 1, 'R');
 }
 
-int main() {
-  std::vector<int> vTestArray = {2, 3, 4, 7, 10, 15};
-  auto tree = createHoffmanTree(vTestArray);
-  // printHuffmanTree(tree, 0);
-  std::cout << getWPL(tree, 0);
+int main(){
+  int t;
+  std::cin >> t;
+  while(t--){
+    int n;
+    std::vector<int> v;
+    std::cin >> n;
+    for(int i = 0; i < n; i ++){
+      int x;
+      std::cin >> x;
+      v.push_back(x);
+
+    }
+    HoffmanTreePtr root = createHoffmanTree(v);
+    // printHuffmanTree(root);
+    std::cout << getWPL(root, 0) << std::endl;
+    
+  }
+
   return 0;
 }
